@@ -2,10 +2,6 @@
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
 import random
-
-from sqlalchemy import null
-
-
 class Dictogram(dict):
     """Dictogram is a histogram implemented as a subclass of the dict type."""
 
@@ -22,19 +18,13 @@ class Dictogram(dict):
     def add_count(self, word, count=1):
         if word in self:
             self[word] += count
-            self.tokens += 1
+            self.tokens += count
         else:
             self[word] = count
             self.types += 1
-            self.tokens += 1
+            self.tokens += count
 
     def frequency(self, word):
-        # if word in self:
-        #     frequency = self[word]
-        # else:
-        #     frequency = 0
-        # return frequency
-
         return self.get(word, 0)
 
     def sample(self):
@@ -42,7 +32,7 @@ class Dictogram(dict):
         sample_num = random.randrange(0, sum(self.values()))
 
         index_position = 0 
-        sample_word = null
+        sample_word = None
 
         for word in self:
             if index_position <= sample_num:
