@@ -13,8 +13,7 @@ def before_first_request():
 
 @app.route("/")
 def home():
-    """Route that returns a web page containing the generated text."""
-    return "Hello world!"
+    return "Hello World"
 
 
 if __name__ == "__main__":
