@@ -32,63 +32,42 @@ class Listogram(list):
                 match = True
 
         if match == False:
-            list = [word, count]
             self.append([word,count])
             self.types += 1
             self.tokens += count
-
-        print(self)
-        # if word in self:
-        #     print ('match found!')
-        #     for list in self: 
-        #         if word in list:
-        #             #if list[0] == word:
-        #             list[1] += count
-        #             print(f'list: {list}')
-        #             self.tokens += count
-        #             print(f'word: {word}')
-        # else:
-        #     list = [word, count]
-        #     self.append([word,count])
-        #     self.types += 1
-        #     self.tokens += count
-        # print(self)
-        # print(f'types: {self.types}')
-        # print(f'tokens: {self.tokens}')
-
-        # fish = "fish"
-        # for entry in self:
-        #     if fish in entry:
-        #         print (entry)
-        #         entry[1] += 2
-        #         print(entry)
-
-
         
-        """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
 
     def frequency(self, word):
         frequency = 0
 
-        for list in self:
-            if word in list:
-                print (list[0])
-                print (list[1])
-                frequency = list[1] 
+        for entry in self:
+            if word in entry:
+                frequency = entry[1] 
 
         return frequency
-        """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
+
 
     def __contains__(self, word):
-        """Return boolean indicating if given word is in this histogram."""
-        # TODO: Check if word is in this histogram
+
+        word_in_list = False
+
+        for entry in self:
+            if word in entry:
+                word_in_list = True
+     
+        return word_in_list
+
 
     def index_of(self, target):
-        """Return the index of entry containing given target word if found in
-        this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
+
+        index = None
+        
+        for entry in self:
+            if target in entry:
+                index = self.index(entry)
+
+        return index
+        
 
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
@@ -170,3 +149,5 @@ if __name__ == '__main__':
     #main()
     fish_words = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
     listogram = Listogram(fish_words)
+    index = listogram.index_of('blue')
+    print(index)
