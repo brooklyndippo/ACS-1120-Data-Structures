@@ -16,13 +16,68 @@ class Listogram(list):
         # Count words in given list, if any
         if word_list is not None:
             for word in word_list:
+                print(word)
                 self.add_count(word)
 
     def add_count(self, word, count=1):
+
+        match = False
+
+        for entry in self:
+            if word in entry:
+                #print ('match found!')
+                #print(entry)
+                entry[1] += count
+                self.tokens += count
+                match = True
+
+        if match == False:
+            list = [word, count]
+            self.append([word,count])
+            self.types += 1
+            self.tokens += count
+
+        print(self)
+        # if word in self:
+        #     print ('match found!')
+        #     for list in self: 
+        #         if word in list:
+        #             #if list[0] == word:
+        #             list[1] += count
+        #             print(f'list: {list}')
+        #             self.tokens += count
+        #             print(f'word: {word}')
+        # else:
+        #     list = [word, count]
+        #     self.append([word,count])
+        #     self.types += 1
+        #     self.tokens += count
+        # print(self)
+        # print(f'types: {self.types}')
+        # print(f'tokens: {self.tokens}')
+
+        # fish = "fish"
+        # for entry in self:
+        #     if fish in entry:
+        #         print (entry)
+        #         entry[1] += 2
+        #         print(entry)
+
+
+        
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
 
     def frequency(self, word):
+        frequency = 0
+
+        for list in self:
+            if word in list:
+                print (list[0])
+                print (list[1])
+                frequency = list[1] 
+
+        return frequency
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
 
@@ -112,4 +167,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    fish_words = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
+    listogram = Listogram(fish_words)
