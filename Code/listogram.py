@@ -162,7 +162,4 @@ def main():
 
 
 if __name__ == '__main__':
-    #main()
-    fish_words = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
-    listogram = Listogram(fish_words)
-    listogram.sample()
+    main()
