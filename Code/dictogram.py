@@ -30,7 +30,7 @@ class Dictogram(dict):
     def sample(self):
         
         sample_num = random.randrange(0, sum(self.values()))
-
+        
         index_position = 0 
         sample_word = None
 

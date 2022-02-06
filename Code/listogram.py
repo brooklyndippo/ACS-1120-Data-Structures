@@ -1,6 +1,8 @@
 #!python
 
-from __future__ import division, print_function  # Python 2 and 3 compatibility
+from __future__ import division, print_function
+from ctypes.wintypes import WORD
+from operator import index  # Python 2 and 3 compatibility
 import random
 
 
@@ -16,7 +18,6 @@ class Listogram(list):
         # Count words in given list, if any
         if word_list is not None:
             for word in word_list:
-                print(word)
                 self.add_count(word)
 
     def add_count(self, word, count=1):
@@ -70,9 +71,24 @@ class Listogram(list):
         
 
     def sample(self):
-        """Return a word from this histogram, randomly sampled by weighting
-        each word's probability of being chosen by its observed frequency."""
-        # TODO: Randomly choose a word based on its frequency in this histogram
+
+        total_words = 0
+
+        for entry in self:
+            total_words += entry[1]
+        
+        sample_num = random.randrange(0, total_words)
+
+        index_position = 0 
+        sample_word = None
+
+        for entry in self:
+            if index_position <= sample_num:
+                index_position += entry[1]
+                sample_word = entry[0]
+
+        return sample_word
+
 
 
 def print_histogram(word_list):
@@ -149,5 +165,4 @@ if __name__ == '__main__':
     #main()
     fish_words = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
     listogram = Listogram(fish_words)
-    index = listogram.index_of('blue')
-    print(index)
+    listogram.sample()
