@@ -1,7 +1,6 @@
 #!python
 
 from __future__ import division, print_function
-from ctypes.wintypes import WORD
 from operator import index  # Python 2 and 3 compatibility
 import random
 
@@ -23,6 +22,10 @@ class Listogram(list):
     def add_count(self, word, count=1):
 
         match = False
+
+        #if index_of(word) is not None:
+        #update 
+        #else
 
         for entry in self:
             if word in entry:
@@ -65,7 +68,7 @@ class Listogram(list):
         
         for entry in self:
             if target in entry:
-                index = self.index(entry)
+                return self.index(entry)
 
         return index
         
@@ -73,6 +76,8 @@ class Listogram(list):
     def sample(self):
 
         total_words = 0
+
+        #shuffle list? random.shufle(self)
 
         for entry in self:
             total_words += entry[1]
