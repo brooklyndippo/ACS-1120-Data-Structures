@@ -1,5 +1,8 @@
 #!python
 
+from operator import index
+
+
 class Node(object):
 
     def __init__(self, data):
@@ -96,8 +99,6 @@ class LinkedList:
             if node.data == item:
                 return True
             node = node.next
-        # if item in self:
-        #     return True
         return False
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
@@ -106,29 +107,42 @@ class LinkedList:
 
     def delete(self, item):
 
-        skip_at_node = -1
-        reroute_to = None 
-        found = False 
-
-        if self.is_empty == True:
+        if self.is_empty == True or self.find(item) == False:
             raise ValueError('Item not found: {}'.format(item))
 
-        elif self.head is not None:
+        elif self.head.data == item and self.tail.data == item:
+            self.head = None
+            self.tail = None
+
+        elif self.head.data == item:
+            new_head = self.head.next
+            self.head = new_head
+
+        elif self.tail.data == item:
             node = self.head
-            while node is not None:
-                if node == item:
-                    reroute_to = node.next
-                    found = True
+            new_tail = node
+            while node.next is not self.tail:
                 node = node.next
-                skip_at_node += 1
-            node = self.head
-            count = 0
-            while count < skip_at_node:
-                node.next
-                count += 1
-            node.next = reroute_to
-            if found == False:
-                raise ValueError('Item not found: {}'.format(item))
+                new_tail = node
+            self.tail = new_tail
+            self.tail.next = None
+
+        else:
+
+            node = self.head 
+            current_node = node
+
+            while node is not None and node.data is not item:
+                current_node = node
+                print(f'current node: {current_node}')
+                node = node.next
+                print(f'node match :{node}')
+                reroute_to = node.next
+                print(f'reroute_to: {reroute_to}')
+
+            current_node.next = reroute_to
+            
+            
 
         """Delete the given item from this linked list, or raise ValueError.
         TODO: Best case running time: O(???) Why and under what conditions?
