@@ -55,7 +55,7 @@ class LinkedList:
     def length(self):
         length = 0
         node = self.head
-        while node is not None:
+        while node is not None:    #while node: does the same thing!
             length += 1
             node = node.next
         return length
@@ -95,7 +95,7 @@ class LinkedList:
     def find(self, item):
 
         node = self.head
-        while node is not None:
+        while node is not None:    #while node: does the same thing!
             if node.data == item:
                 return True
             node = node.next
@@ -108,7 +108,7 @@ class LinkedList:
     def find_if_matches(self, matching_function):
     #Return an item from this linked list if it is present.
         node = self.head
-        while node is not None:
+        while node is not None:     #while node: does the same thing!
             if matching_function(node.data): 
                 return node.data
             node = node.next
