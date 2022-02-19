@@ -60,7 +60,12 @@ class HashTable(object):
         # Collect all pairs of key-value entries in each bucket
         all_items = []
         for bucket in self.buckets:
-            all_items.extend(bucket.items())
+            items = bucket.items()
+            for item in items:
+                item = tuple(item)
+                all_items.append(item)
+            #all_items.extend(tuple(bucket.items()))
+            #print(all_items)
         return all_items
 
     def length(self):

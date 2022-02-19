@@ -42,11 +42,11 @@ class HashTableTest(unittest.TestCase):
         ht = HashTable()
         assert ht.items() == []
         ht.set('I', 1)
-        assert ht.items() == [['I', 1]]
+        assert ht.items() == [('I', 1)]
         ht.set('V', 5)
-        self.assertCountEqual(ht.items(), [['I', 1], ['V', 5]])
+        self.assertCountEqual(ht.items(), [('I', 1), ('V', 5)])
         ht.set('X', 10)
-        self.assertCountEqual(ht.items(), [['I', 1], ['V', 5], ['X', 10]])
+        self.assertCountEqual(ht.items(), [('I', 1), ('V', 5), ('X', 10)])
 
     #passing
     def test_length(self):
