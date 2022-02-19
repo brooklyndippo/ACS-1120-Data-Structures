@@ -28,7 +28,7 @@ class HashTable(object):
         """Return the bucket index where the given key would be stored."""
         # Calculate the given key's hash code and transform into bucket index
         bucket_index =  hash(key) % len(self.buckets)
-        print(bucket_index)
+        # print(bucket_index)
         return bucket_index
 
     def keys(self):
@@ -48,8 +48,8 @@ class HashTable(object):
         all_values = []
         for bucket in self.buckets:
             for key, value in bucket.items():
-                print (f'key: {key}')
-                print (f'value: {value}')
+                # print (f'key: {key}')
+                # print (f'value: {value}')
                 all_values.append(value)
         return all_values
         # TODO: Collect all values in each bucket
@@ -118,14 +118,14 @@ class HashTable(object):
         # TODO: Find bucket where given key belongs
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        print(index)
-        print(bucket)
+        # print(index)
+        # print(bucket)
         # TODO: Check if key-value entry exists in bucket
         entry = bucket.find_if_matches(lambda entry: entry[0] == key)
-        print(entry)
+        # print(entry)
         # TODO: If found, update value associated with given key
         if entry:
-            print('cool things!')
+            bucket.update(key, value)
         else:
             #print('not cool')
             bucket.append([key, value])
@@ -136,17 +136,21 @@ class HashTable(object):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+
         # TODO: Check if key-value entry exists in bucket
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
+
         # TODO: If found, delete entry associated with given key
-        # TODO: Otherwise, raise error to tell user delete failed
+        if entry:
+            bucket.delete(entry)
+        else:
+            #print('not cool')
+            raise KeyError('Key not found: {}'.format(key))
+        #  TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
 if __name__ == '__main__':
-    ht = HashTable(4)
-    print(len(ht.buckets))
-    print(ht.length())
+    ht = HashTable()
     print('hash table: {}'.format(ht))
-
-
-
-# entry = bucket.find_if_matches

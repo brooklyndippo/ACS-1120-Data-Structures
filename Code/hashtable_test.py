@@ -8,12 +8,14 @@ if not hasattr(unittest.TestCase, 'assertCountEqual'):
 
 
 class HashTableTest(unittest.TestCase):
-
+    
+    #passing
     def test_init(self):
         ht = HashTable(4)
         assert len(ht.buckets) == 4
         assert ht.length() == 0
 
+    #passing
     def test_keys(self):
         ht = HashTable()
         assert ht.keys() == []
@@ -23,7 +25,8 @@ class HashTableTest(unittest.TestCase):
         self.assertCountEqual(ht.keys(), ['I', 'V'])  # Ignore item order
         ht.set('X', 10)
         self.assertCountEqual(ht.keys(), ['I', 'V', 'X'])  # Ignore item order
-
+    
+    #passing
     def test_values(self):
         ht = HashTable()
         assert ht.values() == []
@@ -34,16 +37,18 @@ class HashTableTest(unittest.TestCase):
         ht.set('X', 10)
         self.assertCountEqual(ht.values(), [1, 5, 10])  # Ignore item order
 
+    #fail
     def test_items(self):
         ht = HashTable()
         assert ht.items() == []
         ht.set('I', 1)
-        assert ht.items() == [('I', 1)]
+        assert ht.items() == [['I', 1]]
         ht.set('V', 5)
-        self.assertCountEqual(ht.items(), [('I', 1), ('V', 5)])
+        self.assertCountEqual(ht.items(), [['I', 1], ['V', 5]])
         ht.set('X', 10)
-        self.assertCountEqual(ht.items(), [('I', 1), ('V', 5), ('X', 10)])
+        self.assertCountEqual(ht.items(), [['I', 1], ['V', 5], ['X', 10]])
 
+    #passing
     def test_length(self):
         ht = HashTable()
         assert ht.length() == 0
@@ -54,6 +59,7 @@ class HashTableTest(unittest.TestCase):
         ht.set('X', 10)
         assert ht.length() == 3
 
+    #passing
     def test_contains(self):
         ht = HashTable()
         ht.set('I', 1)
@@ -64,6 +70,7 @@ class HashTableTest(unittest.TestCase):
         assert ht.contains('X') is True
         assert ht.contains('A') is False
 
+    #passing
     def test_set_and_get(self):
         ht = HashTable()
         ht.set('I', 1)
@@ -76,6 +83,7 @@ class HashTableTest(unittest.TestCase):
         with self.assertRaises(KeyError):
             ht.get('A')  # Key does not exist
 
+    #passing
     def test_set_twice_and_get(self):
         ht = HashTable()
         ht.set('I', 1)
@@ -89,6 +97,7 @@ class HashTableTest(unittest.TestCase):
         assert ht.get('X') == 10
         assert ht.length() == 3  # Check length is not overcounting
 
+    #passing
     def test_delete(self):
         ht = HashTable()
         ht.set('I', 1)

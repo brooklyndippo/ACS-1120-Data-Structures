@@ -114,6 +114,13 @@ class LinkedList:
             node = node.next
         return None 
 
+    def update(self, key, new_data):
+        node = self.head
+        while node:
+            if key == node.data[0]:
+                node.data[1] = new_data
+            node = node.next
+
     def delete(self, item):
 
         if self.is_empty == True or self.find(item) == False:   #n
