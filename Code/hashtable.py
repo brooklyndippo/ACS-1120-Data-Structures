@@ -94,3 +94,7 @@ class HashTable(object):
 if __name__ == '__main__':
     ht = HashTable()
     print('hash table: {}'.format(ht))
+
+
+
+entry = bucket.find_if_matches

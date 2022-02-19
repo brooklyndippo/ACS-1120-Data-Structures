@@ -105,9 +105,18 @@ class LinkedList:
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
 
+    def find_if_matches(self, matching_function):
+    #Return an item from this linked list if it is present.
+        node = self.head
+        while node is not None:
+            if matching_function(node.data): 
+                return node.data
+            node = node.next
+        return None 
+
     def delete(self, item):
 
-        if self.is_empty == True or self.find(item) == False:
+        if self.is_empty == True or self.find(item) == False:   #n
             raise ValueError('Item not found: {}'.format(item))
 
         elif self.head.data == item and self.tail.data == item:
@@ -121,21 +130,20 @@ class LinkedList:
         elif self.tail.data == item:
             node = self.head
             new_tail = node
-            while node.next is not self.tail:
+            while node.next is not self.tail:      #n
                 node = node.next
                 new_tail = node
             self.tail = new_tail
             self.tail.next = None
 
         else:
-
             node = self.head 
             current_node = node
 
             while node is not None and node.data is not item:
                 current_node = node
                 print(f'current node: {current_node}')
-                node = node.next
+                node = node.next                 #n
                 print(f'node match :{node}')
                 reroute_to = node.next
                 print(f'reroute_to: {reroute_to}')
