@@ -13,7 +13,7 @@ def before_first_request():
 
 @app.route("/")
 def home():
-    return "Hello World"
+    return "Hello World - Hello Sun"
 
 
 if __name__ == "__main__":
