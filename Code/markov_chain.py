@@ -1,4 +1,5 @@
 import random
+from format_text import format_text
 from dictogram import Dictogram
 
 random_words = ["peanut", "butter", "jelly", "butter", "jelly", "peanut", "jelly", "butter", "toast", "time"]
@@ -43,9 +44,11 @@ class Markov_Chain(Dictogram):
 
     def walk_markov_chain(self):
         
-        sentence_length = random.randint(4, 20)
-        word_1 = self.word_list[0]
-        word_2 = self.word_list[1]
+        sentence_length = random.randint(15, 20)
+        text_length = len(self.word_list)
+        start = random.randint(0, text_length)
+        word_1 = self.word_list[start]
+        word_2 = self.word_list[start+1]
     
         sentence = []
 
@@ -76,7 +79,8 @@ class Markov_Chain(Dictogram):
 
 
 if __name__ == '__main__':
-    chain = Markov_Chain(random_words)
+    planet_earth = format_text('./planet_earth.txt')
+    chain = Markov_Chain(planet_earth)
     chain.walk_markov_chain()
 
 
