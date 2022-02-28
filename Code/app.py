@@ -1,7 +1,5 @@
 from flask import Flask
-from Code.format_text import format_text
-from format_text import format_text
-from markov_chain import Markov_Chain, random_words
+from markov_chain import Markov_Chain, planet_earth
 
 
 app = Flask(__name__)
@@ -16,7 +14,6 @@ def before_first_request():
 
 @app.route("/")
 def home():
-    planet_earth = format_text('./planet_earth.txt')
     chain = Markov_Chain(planet_earth)
     sentence = chain.walk_markov_chain()
     return sentence
