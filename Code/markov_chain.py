@@ -37,11 +37,47 @@ class Markov_Chain(Dictogram):
         
             index += 1
     
-        print(self)
+        #print(self)
+
+        return self
+
+    def walk_markov_chain(self):
+        
+        sentence_length = random.randint(4, 20)
+        word_1 = self.word_list[0]
+        word_2 = self.word_list[1]
+    
+        sentence = []
+
+
+        current_tuple = (word_1, word_2)
+        sentence.append(word_1)
+        sentence.append(word_2)
+        next_word = self[current_tuple].sample()
+        index = 1
+
+
+        while index < sentence_length:
+            current_tuple = (current_tuple[1], next_word)
+            sentence.append(current_tuple[1])
+            if current_tuple in self:
+                next_word = self[current_tuple].sample()
+                print(next_word)
+                index += 1
+            else:
+                index = sentence_length
+
+        #sentence = sentence.join(' ')
+        sentence = ' '.join(sentence)
+        print(sentence)
+        return sentence
+
+
 
 
 if __name__ == '__main__':
     chain = Markov_Chain(random_words)
+    chain.walk_markov_chain()
 
 
 # def markov_chain:

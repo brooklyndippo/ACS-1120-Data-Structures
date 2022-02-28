@@ -1,4 +1,5 @@
 from flask import Flask
+from markov_chain import Markov_Chain, random_words
 
 
 app = Flask(__name__)
@@ -13,7 +14,9 @@ def before_first_request():
 
 @app.route("/")
 def home():
-    return "Hello World - Hello Sun"
+    chain = Markov_Chain(random_words)
+    sentence = chain.walk_markov_chain()
+    return sentence
 
 
 if __name__ == "__main__":
