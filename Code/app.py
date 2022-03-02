@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template
 from markov_chain_nth import Markov_Chain
 from format_text import planet_earth
 
@@ -17,8 +17,13 @@ def before_first_request():
 def home():
     chain = Markov_Chain(planet_earth, 3)
     sentence = chain.walk_markov_chain()
-    return sentence
+    return render_template('home.html', sentence=sentence)
 
+
+@app.route("/tweet", methods=['POST'])
+def tweet():
+    status = request.form['sentence']
+    print(status)
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.

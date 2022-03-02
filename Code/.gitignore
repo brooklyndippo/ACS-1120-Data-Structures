@@ -94,3 +94,4 @@ Class*.md
 slides/
 .vscode/
 *.zip
+.env
