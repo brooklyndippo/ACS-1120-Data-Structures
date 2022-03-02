@@ -1,5 +1,6 @@
 from flask import Flask
-from markov_chain import Markov_Chain, planet_earth
+from markov_chain_nth import Markov_Chain
+from format_text import planet_earth
 
 
 app = Flask(__name__)
@@ -14,7 +15,7 @@ def before_first_request():
 
 @app.route("/")
 def home():
-    chain = Markov_Chain(planet_earth)
+    chain = Markov_Chain(planet_earth, 3)
     sentence = chain.walk_markov_chain()
     return sentence
 
