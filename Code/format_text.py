@@ -21,8 +21,7 @@ def compile_corpus(directory):
 
     for file in os.listdir(directory):
         word_list = format_text(directory,file)
-        print(file)
-        print(len(word_list))
+
         for word in word_list:
             corpus.append(word)
 
@@ -30,4 +29,3 @@ def compile_corpus(directory):
 
 
 planet_earth = compile_corpus('./corpus')
-print(len(planet_earth))

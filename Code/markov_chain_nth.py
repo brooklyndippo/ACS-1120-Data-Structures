@@ -2,7 +2,7 @@ import random
 from format_text import format_text
 from dictogram import Dictogram
 
-planet_earth = format_text('./planet_earth.txt')
+planet_earth = format_text('./corpus', 'life_that_glows.txt')
 random_words = ["peanut", "butter", "jelly", "butter", "peanut", "butter","jelly", "butter","peanut", "jelly", "butter", "toast", "time"]
 
 class Markov_Chain(Dictogram):
