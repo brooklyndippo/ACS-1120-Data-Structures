@@ -9,7 +9,7 @@ def format_text(directory, file):
 
     #string.punctuation = !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 
-    #punctuation = '\,' 
+    #punctuation = '\.\:\;\"\,\!' 
     #sentence_structure = re.sub('. ', 'START END')
     #LAUGHTER
 
