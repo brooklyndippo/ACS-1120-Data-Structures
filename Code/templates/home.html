@@ -1,0 +1,23 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Planet Earth Line Generator</h1>
+
+    <div>
+      <blockquote>{{ sentence }}</blockquote>
+    </div>
+    <p>
+
+    </p>
+    <!-- Generate a new line -->
+    <form action="/tweet" method="post">
+      <input type="hidden" name="sentence" value="{{ sentence }}">
+      <button type="submit">Tweet this</button>
+    </form>
+    <!-- Tweet it! -->
+    <form action="/tweet" method="post">
+      <input type="hidden" name="sentence" value="{{ sentence }}">
+      <button type="submit">Tweet this</button>
+    </form>
+{% endblock %}

@@ -88,7 +88,7 @@ _navbar.md
 _sidebar.md
 .nojekyll
 Setup.md
-*.html
+#*.html
 StudyGuides.md
 Class*.md
 slides/

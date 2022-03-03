@@ -4,6 +4,7 @@ from parse_sentence_structure import planet_earth
 
 
 app = Flask(__name__)
+markov_chain = Markov_Chain(planet_earth, 3)
 
 
 @app.before_first_request
@@ -13,13 +14,13 @@ def before_first_request():
 
 @app.route("/")
 def home():
-    chain = Markov_Chain(planet_earth, 3)
-    sentence = chain.walk_markov_chain()
+    sentence = markov_chain.walk_markov_chain()
     return render_template('home.html', sentence=sentence)
 
 @app.route("/tweet", methods=['POST'])
 def tweet():
     status = request.form['sentence']
+    twitter.tweet(status)
     print(status)
 
 if __name__ == "__main__":
