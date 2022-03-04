@@ -1,10 +1,11 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from markov_chain_nth_sentences import Markov_Chain
 from parse_sentence_structure import planet_earth
+import twitter
 
 
 app = Flask(__name__)
-markov_chain = Markov_Chain(planet_earth, 3)
+markov_chain = Markov_Chain(planet_earth, 2)
 
 
 @app.before_first_request
@@ -17,11 +18,12 @@ def home():
     sentence = markov_chain.walk_markov_chain()
     return render_template('home.html', sentence=sentence)
 
-@app.route("/tweet", methods=['POST'])
+@app.route('/tweet', methods=['POST'])
 def tweet():
     status = request.form['sentence']
-    twitter.tweet(status)
     print(status)
+    twitter.tweet(status)
+    return redirect(home)
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.

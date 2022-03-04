@@ -11,7 +11,6 @@ def format_text(directory, file):
 
     #punctuation = '\.\:\;\"\,\!' 
     #sentence_structure = re.sub('. ', 'START END')
-    #LAUGHTER
 
     with open(route, "r") as file:
         for line in file:

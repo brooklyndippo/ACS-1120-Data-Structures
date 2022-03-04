@@ -11,10 +11,11 @@
 
     </p>
     <!-- Tweet it! -->
+    <blockquote>{{ sentence }}</blockquote>
     <form action="/tweet" method="post">
-      <input type="hidden" name="sentence" value="{{ sentence }}">
-      <button type="submit">Tweet this</button>
-    </form>
+       <input type="hidden" name="sentence" value="{{ sentence }}">
+       <button type="submit">Tweet this</button>
+    </form>    
     <!-- Visit twitter -->
     <a href="https://twitter.com/planetearthish" target="_blank">@planetearthish</a>
 {% endblock %}
