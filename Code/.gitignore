@@ -8,7 +8,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+#dist/
 downloads/
 eggs/
 .eggs/
@@ -88,7 +88,6 @@ _navbar.md
 _sidebar.md
 .nojekyll
 Setup.md
-#*.html
 StudyGuides.md
 Class*.md
 slides/

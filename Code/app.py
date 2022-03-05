@@ -13,7 +13,7 @@ def before_first_request():
     """Runs only once at Flask startup"""
     # TODO: Initialize your histogram, hash table, or markov chain here.
 
-@app.route("/")
+@app.route('/')
 def home():
     sentence = markov_chain.walk_markov_chain()
     return render_template('home.html', sentence=sentence)
