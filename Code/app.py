@@ -16,7 +16,7 @@ def before_first_request():
 @app.route('/')
 def home():
     sentence = markov_chain.walk_markov_chain()
-    return render_template('home.html', sentence=sentence)
+    return render_template('index.html', sentence=sentence)
 
 @app.route('/tweet', methods=['POST'])
 def tweet():
