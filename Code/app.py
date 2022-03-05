@@ -23,7 +23,7 @@ def tweet():
     status = request.form['sentence']
     print(status)
     twitter.tweet(status)
-    return redirect(home)
+    return redirect('/')
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.
